@@ -1,10 +1,10 @@
-# poz6
+# poz9
 
 ![poz6](imgur.com image replace me!)
 
 *A short description of the keyboard/project*
 
-* Keyboard Maintainer: [cdelcristo](https://github.com/cdelcristo)
+* Keyboard Maintainer: [Carlos Delcristo](https://github.com/m0rza)
 * Hardware Supported: *The PCBs, controllers supported*
 * Hardware Availability: *Links to where you can find this hardware*
 
