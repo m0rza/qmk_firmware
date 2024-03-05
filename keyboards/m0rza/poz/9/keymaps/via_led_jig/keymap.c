@@ -1,4 +1,10 @@
 #include QMK_KEYBOARD_H
+#include "features/mouse_turbo_click.h"
+
+enum custom_keycodes {
+  TURBO = SAFE_RANGE,
+  // Other custom keys...
+};
 
 // // 224x64
 // led_config_t g_led_config = { {
@@ -51,27 +57,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-// bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-//     const int led_index = 3;
-//     switch(get_highest_layer(layer_state)) {
-//         case 0:
-//             rgb_matrix_set_color(led_index, RGB_YELLOW);
-//             break;
-//         case 1:
-//             rgb_matrix_set_color(led_index, RGB_RED);
-//             break;
-//         case 2:
-//             rgb_matrix_set_color(led_index, RGB_CHARTREUSE);
-//             break;
-//         case 3:
-//             rgb_matrix_set_color(led_index, RGB_GREEN);
-//             break;
-//         default:
-//             break;
-//     }
-//     return false;
-// }
-
 const rgblight_segment_t PROGMEM layer_1[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 3, HSV_RED}
 );
@@ -113,4 +98,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(3, layer_state_cmp(state, 3));
     rgblight_set_layer_state(4, layer_state_cmp(state, 4));
     return state;
+}
+// jiggler
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_mouse_turbo_click(keycode, record, TURBO)) { return false; }
+  // Your macros ...
+
+  return true;
 }
